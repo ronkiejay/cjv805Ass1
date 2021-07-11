@@ -6,24 +6,12 @@ import { useContext, useRef } from "react";
 
 const Login = () => {
     const userName = useRef(null);
-    const userPass = useRef(null);
+    const userPassword = useRef(null);
   
     const { allUsers } = useContext(UserContext);
     const { activeUser, setActiveUser } = useContext(ActiveContext);
   
-    const userLogin = (event) => {
-      event.preventDefault();
-      const username = userName.current.value;
-      const password = userPass.current.value;
-  
-      const returnedUsers = allUsers.filter((allUser) => username === allUser.Username);
-      if (returnedUsers.length === 1) {
-        setActiveUser(returnedUsers[0]);
-      }
-      
-    };
-  
-    const buttonLogin = (event) => {
+    const loginButton = (event) => {
       const userId = event.target.value;
       const returnedUsers = allUsers.filter((allUser) => parseInt(userId) === allUser.id);
       if (returnedUsers.length === 1) {
@@ -50,11 +38,11 @@ const Login = () => {
                 type="password"
                 id="password"
                 placeholder="Password"
-                ref={userPass}
+                ref={userPassword}
               />
               </div>
               <div className="form-group">
-              <Button className="login-btn" type="submit" onClick={userLogin}>
+              <Button className="login-btn" type="submit" >
                 Login
               </Button>
               </div>
